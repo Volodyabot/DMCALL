@@ -147,24 +147,11 @@ namespace DMCALL
 
             Random random = new Random();
             bool overlap = true;
-            double minDistance = 75;
+            double minDistance = 50;
             double Size = 50;
 
             for (int i = 0; i < arraySize; i++)
             {
-                for (int j = 0; j < arraySize; j++)
-                {
-                    if (array2d[i, j] > 0)
-                    {
-                        Edge edge = new Edge();
-                        edge.Value = array2d[i, j];
-                        edge.textBlock.Text = edge.Value.ToString();
-                        edge.Start = vertices[i];
-                        edge.End = vertices[j];
-                        edges.Add(edge);
-                    }
-                }
-
                 overlap = true;
                 while (overlap)
                 {
@@ -188,7 +175,18 @@ namespace DMCALL
                         }
                     }
                 }
-
+                for (int j = 0; j < arraySize; j++)
+                {
+                    if (array2d[i, j] > 0)
+                    {
+                        Edge edge = new Edge();
+                        edge.Value = array2d[i, j];
+                        edge.textBlock.Text = edge.Value.ToString();
+                        edge.Start = vertices[i];
+                        edge.End = vertices[j];
+                        edges.Add(edge);
+                    }
+                }
             }
             graph.Vertices = vertices;
             graph.Edges = edges;
